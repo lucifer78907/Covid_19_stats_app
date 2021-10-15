@@ -21,6 +21,8 @@ def submit_state():
                         message=f"Confirmed {state_data['confirmed']}\n"
                         f"Deceased {state_data['deceased']}\n"
                         f"Recovered {state_data['recovered']}")
+    entry_field.delete(0,END)
+    entry_field.focus()
 
 
 def show_states():
