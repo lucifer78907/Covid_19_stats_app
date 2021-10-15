@@ -1,8 +1,5 @@
-import re
-from tkinter import font
 from dotenv import load_dotenv
 import requests
-from pprint import pprint
 import os
 from tkinter import *
 from tkinter import messagebox
@@ -25,9 +22,21 @@ data = requests.get(url=WEBSITE_URL).json()
 #     pprint(data[states]['total'])
 
 name_list = [state_name for state_name in data if state_name!="TT"]
-print(len(name_list),name_list)
-print(len(STATES_LIST))
 
+data_list = [data[states]['total'] for states in data if states!="TT"] 
+# getting the data in the list of the namesk
+
+covid_data_states = [];
+
+for covid_data in data_list:
+    ele_dict = {
+        "confirmed":covid_data['confirmed'],
+        "deceased":covid_data['deceased'],
+        "recovered":covid_data['recovered']
+    }
+    covid_data_states.append(ele_dict)
+
+print(f"Covid data is {covid_data_states}, length is {len(covid_data_states)}")
 
 # Making the UI
 window = Tk()
