@@ -34,12 +34,12 @@ window = Tk()
 window.title("Covid 19 Statistics App")
 window.config(padx=100,pady=50,height=900,width=900,bg=GREEN)
 title_label = Label(text="Covid 19 Stats",font=("Courier",25,"bold"),bg=GREEN,fg=PINK)
-title_label.grid(column=0,row=0)
+title_label.grid(column=1,row=0)
 canvas = Canvas(width=500,height=500,highlightthickness=0,bg=GREEN)
 covid_image =  PhotoImage(file="covid.png")
 covid_canvas = canvas.create_image(250,250,image = covid_image)
-canvas.grid(column=0,row=1)
-show_list_button = Button(text="Show Availabel States",
+canvas.grid(column=1,row=1)
+show_list_button = Button(text="States",
     highlightthickness=0,
     bg=GREEN,
     command=show_states,
@@ -48,11 +48,10 @@ show_list_button.grid(column=0,row=2)
 enter_a_state_label = Label(text="Enter A State",
             fg=PINK,
             font=("Courier",10,"bold"),
-            bg=GREEN,
-            pady=10)
-enter_a_state_label.grid(column=0,row=3)
+            bg=GREEN,)
+enter_a_state_label.grid(column=1,row=2)
 entry_field = Entry()
-entry_field.grid(column=0,row=4)
+entry_field.grid(column=1,row=3)
 submit_button = Button(text="Submit",highlightthickness=0,bg=GREEN)
-submit_button.grid(column=0,row=5)
+submit_button.grid(column=2,row=2)
 window.mainloop()
