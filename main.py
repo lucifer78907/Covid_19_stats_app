@@ -12,6 +12,14 @@ STATES_LIST = ['Andaman Nicobar islands','Andhra Pradesh','Arunachal Pradesh','A
 WEBSITE_URL = f"{os.getenv('API_URL')}"
 
 STATES_LIST = [f"{states}\n".lower() for states in STATES_LIST]
+
+def submit_state():
+    entered_state = entry_field.get().lower()
+    index_in_states_list = STATES_LIST.index(f"{entered_state}\n")
+    state_data = covid_data_states[index_in_states_list]
+    print(state_data)
+
+
 def show_states():
     messagebox.showinfo("List of States","".join(STATES_LIST).title())
 
@@ -61,6 +69,6 @@ enter_a_state_label = Label(text="Enter A State",
 enter_a_state_label.grid(column=1,row=2)
 entry_field = Entry()
 entry_field.grid(column=1,row=3)
-submit_button = Button(text="Submit",highlightthickness=0,bg=GREEN)
+submit_button = Button(text="Submit",highlightthickness=0,bg=GREEN,command=submit_state)
 submit_button.grid(column=2,row=2)
 window.mainloop()
