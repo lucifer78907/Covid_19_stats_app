@@ -17,7 +17,10 @@ def submit_state():
     entered_state = entry_field.get().lower()
     index_in_states_list = STATES_LIST.index(f"{entered_state}\n")
     state_data = covid_data_states[index_in_states_list]
-    print(state_data)
+    messagebox.showinfo(title=f"{entered_state.title()}",
+                        message=f"Confirmed {state_data['confirmed']}\n"
+                        f"Deceased {state_data['deceased']}\n"
+                        f"Recovered {state_data['recovered']}")
 
 
 def show_states():
@@ -44,7 +47,6 @@ for covid_data in data_list:
     }
     covid_data_states.append(ele_dict)
 
-print(f"Covid data is {covid_data_states}, length is {len(covid_data_states)}")
 
 # Making the UI
 window = Tk()
