@@ -3,6 +3,7 @@ import requests
 import os
 from tkinter import *
 from tkinter import messagebox
+import matplotlib.pyplot as plt
 load_dotenv()
 
 PINK = "#7027A0"
@@ -23,6 +24,12 @@ def submit_state():
                         f"Recovered {state_data['recovered']}")
     entry_field.delete(0,END)
     entry_field.focus()
+    LABELS = ['Deceased','Recovered']
+    MY_EXPLODE = [0.02,0]
+    DATA = [state_data['deceased'],state_data['recovered']] 
+    plt.title(f"Stats for {entered_state.title()}")
+    plt.pie(DATA,labels=LABELS,explode=MY_EXPLODE,colors=["b","#4CAF50"])
+    plt.show()
 
 
 def show_states():
@@ -72,6 +79,7 @@ enter_a_state_label = Label(text="Enter A State",
             bg=GREEN,)
 enter_a_state_label.grid(column=1,row=2)
 entry_field = Entry()
+entry_field.focus()
 entry_field.grid(column=1,row=3)
 submit_button = Button(text="Submit",highlightthickness=0,bg=GREEN,command=submit_state)
 submit_button.grid(column=2,row=2)
